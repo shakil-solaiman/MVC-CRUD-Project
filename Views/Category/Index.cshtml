@@ -1,0 +1,59 @@
+@model List<CRUD_Operation.Models.Category>
+
+@{
+    ViewData["Title"] = "Category List";
+}
+
+<h1>Category List</h1>
+
+<a asp-controller="Category" asp-action="Create" class="btn btn-primary">Create Category</a>
+
+@* <a href="/category/create" class="btn btn-primary">Create Category</a> *@
+
+
+<br />
+<br />
+
+<table border="1" cellpadding="15" >
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Active Status</th>
+            <th>Created Time</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+
+    <tbody>
+        @foreach (var category in Model)
+        {
+            <tr>
+                <td>@category.Id</td>
+                <td>@category.name</td>
+                <td>@category.description</td>
+                <td>
+                    @if (@category.isActive)
+                    {
+                        <span class="text-success">Active</span>
+                    }
+                    else
+                    {
+                        <span class="text-danger">Inactive</span>
+                    }
+
+                </td>
+                <td>@category.createdTime</td>
+
+                <td>
+                    <a asp-controller="Category" asp-action="Edit" asp-route-id="@category.Id" class="btn btn-primary">Edit</a>
+                    <a asp-controller="Category" asp-action="Delete" asp-route-id="@category.Id" class="btn btn-primary">Delete</a>
+
+                </td>
+                
+            </tr>
+        }
+    </tbody>
+</table>

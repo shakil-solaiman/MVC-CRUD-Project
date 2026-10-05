@@ -1,0 +1,42 @@
+@model CRUD_Operation.Models.Category
+
+@{
+    ViewData["Title"] = "Edit Category";
+}
+
+<h1>Edit Category</h1>
+
+<form asp-controller="Category" asp-action="Edit" method="post">
+    <!-- Hidden Field for Id -->
+    <input type="hidden" asp-for="Id" />
+
+    <div>
+        <label asp-for="name">Name</label>
+        <input asp-for="name" class="form-control" />
+        <span asp-validation-for="name" class="text-danger"></span>
+    </div>
+
+    <br />
+
+    <div>
+        <label asp-for="description">Description</label>
+        <input asp-for="description" class="form-control" />
+        <span asp-validation-for="description" class="text-danger"></span>
+    </div>
+
+    <br>
+
+   <div class="form-check form-switch">
+    <input type="checkbox" asp-for="isActive" class="form-check-input" role="switch" id="isActive" />
+    <label class="form-check-label" asp-for="isActive">Active Status</label>
+    <span asp-validation-for="isActive" class="text-danger"></span>
+    </div>
+
+    
+
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>
+
+<br />
+
+<a asp-controller="Category" asp-action="Index" class="btn btn-primary">Back to List</a>
